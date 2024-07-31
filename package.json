@@ -1,0 +1,45 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/app.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only --exit-child src/app.ts",
+    "build": "tsc -p .",
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "migrate": "rimraf build && npm run build && npm run typeorm -- -d ./src/utils/data-source.ts migration:generate ./src/migrations/added-entity",
+    "db:push": "rimraf build && npm run build && npm run typeorm migration:run -- -d ./src/utils/data-source.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/config": "^3.3.4",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^16.11.10",
+    "morgan": "^1.10.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "4.5.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.12",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "envalid": "^8.0.0",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.4.0",
+    "redis": "^4.7.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.3.20",
+    "zod": "^3.23.8"
+  }
+}
